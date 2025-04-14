@@ -38,12 +38,5 @@ I love creating **clean, modern, and performant applications** that deliver exce
 | 📦 **Express.js** | Web frameworks and middleware |
 | 🍃 **MongoDB** | NoSQL database solutions |
 
----
-
-## 📈 GitHub Stats
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vipinsundar&show_icons=true&theme=radical" width="48%" />
-</div>
 
 ---
