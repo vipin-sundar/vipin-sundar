@@ -5,29 +5,23 @@ on:
     branches: [ main ]
 
 jobs:
-  setup:
-    name: 🔧 Setup
+  verify:
+    name: 🔍 Verify Config
     runs-on: ubuntu-latest
-    environment: Production
     steps:
     - uses: actions/checkout@v4
-    - name: Verify Firebase config files exist
+    - name: Check for Firebase files
       run: |
-        echo "Checking for required Firebase files..."
-        [ -f .firebaserc ] || { echo ".firebaserc file missing!"; exit 1; }
-        [ -f firebase.json ] || { echo "firebase.json file missing!"; exit 1; }
-        echo "Both Firebase config files present"
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
+        echo "Repository contents:"
+        ls -la
+        echo "Checking Firebase config files..."
+        [ -f .firebaserc ] || { echo "ERROR: .firebaserc file missing!"; exit 1; }
+        [ -f firebase.json ] || { echo "ERROR: firebase.json file missing!"; exit 1; }
+        echo "Both config files present"
 
   build:
     name: 🏗️ Build
-    needs: setup
+    needs: verify
     runs-on: ubuntu-latest
     environment: Production
     steps:
@@ -41,17 +35,22 @@ jobs:
       run: npm ci
     - name: Build Angular app
       run: npm run build:prod
-    - name: Upload build artifacts
+    - name: Create default .firebaserc if missing
+      if: !exists('.firebaserc')
+      run: |
+        echo '{"projects":{"default":"${{ secrets.FIREBASE_PROJECT_ID }}"}}' > .firebaserc
+        echo "Created .firebaserc file"
+    - name: Verify files before upload
+      run: |
+        ls -la
+        cat .firebaserc
+        cat firebase.json
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dist
-        path: dist/
-        retention-days: 1
-    - name: Upload Firebase config
-      uses: actions/upload-artifact@v4
-      with:
-        name: firebase-config
+        name: app-dist
         path: |
+          dist/
           .firebaserc
           firebase.json
         retention-days: 1
@@ -62,15 +61,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-    - name: Download build artifacts
+    - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: dist
-        path: dist/
-    - name: Download Firebase config
-      uses: actions/download-artifact@v4
-      with:
-        name: firebase-config
+        name: app-dist
         path: ./
     - name: Verify downloaded files
       run: |
