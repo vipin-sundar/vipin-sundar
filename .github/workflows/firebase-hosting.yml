@@ -11,6 +11,12 @@ jobs:
     environment: Production
     steps:
     - uses: actions/checkout@v4
+    - name: Verify Firebase config files exist
+      run: |
+        echo "Checking for required Firebase files..."
+        [ -f .firebaserc ] || { echo ".firebaserc file missing!"; exit 1; }
+        [ -f firebase.json ] || { echo "firebase.json file missing!"; exit 1; }
+        echo "Both Firebase config files present"
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
@@ -66,14 +72,18 @@ jobs:
       with:
         name: firebase-config
         path: ./
-    - name: Install Firebase CLI
-      run: npm install -g firebase-tools
-    - name: Verify Firebase project
+    - name: Verify downloaded files
       run: |
         echo "Current directory contents:"
         ls -la
-        echo "Firebase config:"
+        echo "Firebase config files:"
         cat .firebaserc
-        firebase use --token ${{ secrets.FIREBASE_TOKEN }}
+        cat firebase.json
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
     - name: Deploy to Firebase
-      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      run: |
+        firebase use
+        firebase deploy --only hosting
