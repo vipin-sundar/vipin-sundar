@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
@@ -41,6 +41,14 @@ jobs:
         name: dist
         path: dist/
         retention-days: 1
+    - name: Upload Firebase config
+      uses: actions/upload-artifact@v4
+      with:
+        name: firebase-config
+        path: |
+          .firebaserc
+          firebase.json
+        retention-days: 1
 
   deploy:
     name: 🚀 Deploy
@@ -53,9 +61,19 @@ jobs:
       with:
         name: dist
         path: dist/
+    - name: Download Firebase config
+      uses: actions/download-artifact@v4
+      with:
+        name: firebase-config
+        path: ./
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
     - name: Verify Firebase project
-      run: firebase use --token ${{ secrets.FIREBASE_TOKEN }}
+      run: |
+        echo "Current directory contents:"
+        ls -la
+        echo "Firebase config:"
+        cat .firebaserc
+        firebase use --token ${{ secrets.FIREBASE_TOKEN }}
     - name: Deploy to Firebase
-      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
