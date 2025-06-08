@@ -1,4 +1,4 @@
-.hero {
+.contact {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,21 +8,21 @@
     color: var(--color-foreground);
 }
 
-.hero-container {
+.contact-container {
     max-width: 800px;
     text-align: left;
 }
 
-.hero-greeting {
+.contact-heading {
     font-size: 1rem;
     color: var(--color-red);
     margin-bottom: 0.5rem;
 }
 
-.hero-name {
+.contact-title {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     animation: typewriter 2s steps(20) 1s 1 normal both;
     overflow: hidden;
     white-space: nowrap;
@@ -30,13 +30,7 @@
     width: 0;
 }
 
-.hero-role {
-    font-size: 1.5rem;
-    color: var(--color-orange);
-    margin-bottom: 1rem;
-}
-
-.hero-description {
+.contact-description {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--color-foreground);
@@ -44,9 +38,75 @@
     margin-bottom: 2rem;
 }
 
-.hero-buttons {
+.contact-socials {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-socials a {
+    font-size: 1.5rem;
+    color: var(--color-red);
+    transition: color 0.3s ease;
+}
+
+.contact-socials a:hover {
+    color: var(--color-orange);
+}
+
+@media (max-width: 1024px) {
+    .contact {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .contact-container {
+        text-align: center;
+    }
+
+    .contact-heading {
+        font-size: 0.95rem;
+    }
+
+    .contact-title {
+        font-size: 2.25rem;
+        margin: 0 auto 1rem;
+        white-space: nowrap;
+    }
+
+    .contact-description {
+        font-size: 0.95rem;
+        margin: 1.5rem auto 2rem;
+    }
+
+    .contact-socials {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-description {
+        font-size: 0.9rem;
+    }
+
+    .contact-socials a {
+        font-size: 1.25rem;
+    }
 }
 
 @keyframes typewriter {
@@ -56,73 +116,5 @@
 
     to {
         width: 100%;
-    }
-}
-
-
-@media (max-width: 1024px) {
-    .hero {
-        padding: 2rem 1.5rem;
-    }
-
-    .hero-container {
-        max-width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 2rem 1rem;
-        text-align: center;
-    }
-
-    .hero-container {
-        text-align: center;
-    }
-
-    .hero-greeting {
-        font-size: 0.95rem;
-    }
-
-    .hero-name {
-        font-size: 2.25rem;
-        margin: 0 auto 0.5rem;
-        white-space: nowrap;
-    }
-
-    .hero-role {
-        font-size: 1.2rem;
-    }
-
-    .hero-description {
-        font-size: 0.95rem;
-        margin: 1.5rem auto 2rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .btn,
-    .btn-secondary {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-name {
-        font-size: 1.75rem;
-    }
-
-    .hero-role {
-        font-size: 1rem;
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
     }
 }

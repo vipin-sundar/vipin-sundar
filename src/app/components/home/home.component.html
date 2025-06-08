@@ -1,14 +1,12 @@
 <section class="hero">
-    <div class="hero-content">
-        <p class="hero-subtitle">{{ subtitle }}</p>
-        <h1 class="hero-title">{{ title }}</h1>
-        <p class="hero-description">{{ description }}</p>
-        <div class="hero-actions">
-            <a class="cta-button">{{ actionText }} </a>
-            <a class="secondary-button">Contact Me</a>
+    <div class="hero-container">
+        <h1 class="hero-greeting">{{greeting}}</h1>
+        <h2 class="hero-name">{{title}}</h2>
+        <h3 class="hero-role">{{role}}</h3>
+        <p class="hero-description">{{description}}</p>
+        <div class="hero-buttons">
+            <a href="/assets/resume.pdf" class="btn-primary" download>{{buttons.resume}}</a>
+            <a [routerLink]="'/contact'" class="btn btn-secondary">{{buttons.contact}}</a>
         </div>
-    </div>
-    <div class="image">
-        <img src="images/profile.png" alt="">
     </div>
 </section>

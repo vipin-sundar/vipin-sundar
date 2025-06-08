@@ -1,46 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 * {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Fira Code", monospace;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     background: var(--color-background);
 }
 
-:root {
-    --color-background: #ffffff;
+/* :root {
+    --color-background: #FFFDF6;
     --color-surface: #f8f9fa;
-    --color-text: #212529;
-    --color-text-secondary: #495057;
+    --color-foreground: #212529;
+    --color-foreground-secondary: #495057;
     --color-border: #dee2e6;
     --color-primary: #1971c2;
     --color-primary-hover: #1864ab;
     --color-error: #e03131;
     --color-success: #2b8a3e;
-    --color-warning: #e67700;
+    --color-orange: #e67700;
     --color-info: #1098ad;
     --color-accent: #6741d9;
     --color-accent-hover: #5f3dc4;
     --color-accent-active: #5535b0;
     --shadow-elevation: 0 2px 10px rgba(0, 0, 0, 0.1);
+} */
+
+:root {
+    /* Main Colors */
+    --color-background: #282a36;
+    --color-current-line: #44475a;
+    --color-foreground: #f8f8f2;
+    --color-comment: #6272a4;
+
+    /* Accent Colors */
+    --color-cyan: #8be9fd;
+    --color-green: #50fa7b;
+    --color-orange: #ffb86c;
+    --color-pink: #ff79c6;
+    --color-purple: #bd93f9;
+    --color-red: #ff5555;
+    --color-yellow: #f1fa8c;
+
+    /* Accent Colors hover*/
+    --color-cyan: #8be9fd;
+    --color-green-hover: #50fa7b6b;
+    --color-orange: #ffb86c;
+    --color-pink: #ff79c6;
+    --color-purple: #bd93f9;
+    --color-red-hover: #ff55556b;
+    --color-yellow: #f1fa8c;
+
+    /* Optional */
+    --color-selection: #44475a;
+    /* Same as current line */
+    --color-cursor: #f8f8f0;
+    /* Brighter foreground */
 }
 
-[data-theme="dark"] {
-    --color-background: #121212;
-    --color-surface: #1e1e1e;
-    --color-text: #e1e1e1;
-    --color-text-secondary: #a8a8a8;
-    --color-border: #2e2e2e;
-    --color-primary: #4dabf7;
-    --color-primary-hover: #74c0fc;
-    --color-error: #ff6b6b;
-    --color-success: #69db7c;
-    --color-warning: #ffa94d;
-    --color-info: #66d9e8;
-    --color-accent: #9775fa;
-    --color-accent-hover: #b197fc;
-    --color-accent-active: #d0bfff;
-    --shadow-elevation: 0 2px 10px rgba(255, 255, 255, 0.05);
-
+.btn-primary {
+    text-decoration: none;
+    border: 1px solid var(--color-red);
+    border-radius: 4px;
+    color: var(--color-foreground);
+    padding: 8px 16px;
+    font-size: 12px;
 }
+
+.btn-primary:hover {
+    background: var(--color-red-hover);
+}
+
+.btn-secondary {
+    text-decoration: none;
+    border: 1px solid var(--color-green);
+    border-radius: 4px;
+    color: var(--color-foreground);
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+.btn-secondary:hover {
+    background: var(--color-green-hover);
+}
+
+.line {
+    display: inline-block;
+    width: 200px;
+    height: 1px;
+    background-color: var(--color-red);
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+/* 
+*::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.002) 1px, transparent 0px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.002) 1px, transparent 0px);
+    background-size: 20px 20px;
+    z-index: -1;
+    pointer-events: none;
+} */
