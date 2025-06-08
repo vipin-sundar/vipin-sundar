@@ -1,0 +1,11 @@
+<section class="photography">
+    <div class="photography-container">
+        <h1 class="photography-heading">Photography</h1>
+        <h2 class="photography-title">Moments I've Captured</h2>
+        <div class="photography-grid">
+            <div class="photo-card" *ngFor="let photo of photos">
+                <img [src]="photo.url" [alt]="photo.alt" class="photo-image" (error)="handleImageError($event, photo)">
+            </div>
+        </div>
+    </div>
+</section>

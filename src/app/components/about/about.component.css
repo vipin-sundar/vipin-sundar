@@ -1,4 +1,4 @@
-.hero {
+.about {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,18 +8,18 @@
     color: var(--color-foreground);
 }
 
-.hero-container {
+.about-container {
     max-width: 800px;
     text-align: left;
 }
 
-.hero-greeting {
+.about-heading {
     font-size: 1rem;
     color: var(--color-red);
     margin-bottom: 0.5rem;
 }
 
-.hero-name {
+.about-name {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -30,23 +30,18 @@
     width: 0;
 }
 
-.hero-role {
+.about-role {
     font-size: 1.5rem;
     color: var(--color-orange);
     margin-bottom: 1rem;
 }
 
-.hero-description {
+.about-description {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--color-foreground);
     max-width: 600px;
-    margin-bottom: 2rem;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 @keyframes typewriter {
@@ -61,68 +56,55 @@
 
 
 @media (max-width: 1024px) {
-    .hero {
+    .about {
         padding: 2rem 1.5rem;
     }
 
-    .hero-container {
+    .about-container {
         max-width: 90%;
     }
 }
 
 @media (max-width: 768px) {
-    .hero {
+    .about {
         padding: 2rem 1rem;
         text-align: center;
     }
 
-    .hero-container {
+    .about-container {
         text-align: center;
     }
 
-    .hero-greeting {
+    .about-heading {
         font-size: 0.95rem;
     }
 
-    .hero-name {
+    .about-name {
         font-size: 2.25rem;
         margin: 0 auto 0.5rem;
         white-space: nowrap;
     }
 
-    .hero-role {
+    .about-role {
         font-size: 1.2rem;
     }
 
-    .hero-description {
+    .about-description {
         font-size: 0.95rem;
         margin: 1.5rem auto 2rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .btn,
-    .btn-secondary {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-name {
+    .about-name {
         font-size: 1.75rem;
     }
 
-    .hero-role {
+    .about-role {
         font-size: 1rem;
     }
 
-    .hero-description {
+    .about-description {
         font-size: 0.9rem;
     }
 }
